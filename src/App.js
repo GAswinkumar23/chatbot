@@ -3,7 +3,7 @@ import "./App.css";
 
 export default function App() {
   const [search, setSearch] = useState("");
-   const[sidenav,setSide]=useState(false);
+   const[sidenav,setSide]=useState(true);
   
    const sideSE =()=>{
     setSide(!sidenav);
@@ -11,8 +11,11 @@ export default function App() {
    return (
     
     <div className="parent-div">
-      <div className="side-bar"></div>
-        <button onClick={sideSE}></button>
+      <button onClick={sideSE}>☰</button>
+      <div className={`side-bar ${sidenav ? "active" : ""}`}>
+        Sidebar Content
+        <button onClick={sideSE}>☰</button>
+      </div>
       <div className="main-content">
         <div className="conversaction">Conversaction</div>
 
