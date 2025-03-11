@@ -1,20 +1,30 @@
+import { useState } from "react";
 import "./App.css";
-export default function App()
-{
-  return(
-  <div className="parent-div">
+
+export default function App() {
+  const [search, setSearch] = useState("");
+   const[sidenav,setSide]=useState(false);
+  
+   const sideSE =()=>{
+    setSide(!sidenav);
+   };
+   return (
     
-    <div className="side-bar">
+    <div className="parent-div">
+      <div className="side-bar"></div>
+        <button onClick={sideSE}></button>
+      <div className="main-content">
+        <div className="conversaction">Conversaction</div>
 
-    </div>
-    <div className="main-content">
-      <div className="conversaction">
-
+        <div className="search-div">
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search..."
+          />
+        </div>
       </div>
-      <div className="search-div">
-
-      </div>
     </div>
-    </div>
-    );
+  );
 }
