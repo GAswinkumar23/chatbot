@@ -1,14 +1,16 @@
+
 /* Global Reset */
 * {
   padding: 0;
   box-sizing: border-box;
   margin: 0;
 }
-.medtitle{
+
+.medtitle {
   position: relative;
-  left:40%;
-  color:white;
-  font-size:30px;
+  left: 40%;
+  color: white;
+  font-size: 30px;
 }
 
 /************************Parent Div*****************************/
@@ -18,11 +20,12 @@
   display: flex;
   flex-direction: row;
   border: 2px solid black;
+  overflow: hidden;
 }
 
 /************************Side Bar*****************************/
 .side-bar {
-  width: 20%; /* Responsive width */
+  width: 20%;
   background-color: #f4f4f4;
   border-right: 2px solid red;
   overflow: hidden;
@@ -30,14 +33,13 @@
 }
 
 .side-bar.active {
-  width: 20%; /* Show sidebar */
+  width: 20%;
 }
 
 .side-bar:not(.active) {
-  width: 0; /* Hide sidebar */
+  width: 0;
 }
 
-/* Responsive Sidebar Navigation */
 .side-navigate {
   display: flex;
   align-items: center;
@@ -48,7 +50,7 @@
   border: 2px solid purple;
 }
 
-/************************Chat Container*****************************/
+/************************Chat history Container*****************************/
 .previouschat {
   width: 100%;
   margin: 20px auto;
@@ -58,23 +60,20 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-height: 400px;
   overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Hide scrollbar */
 .previouschat::-webkit-scrollbar {
   display: none;
 }
 
-/* Chat List */
 .previouschat ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Chat Items */
 .previouschat li {
   padding: 15px;
   margin-bottom: 10px;
@@ -95,14 +94,14 @@
 
 /************************Main Content*****************************/
 .main-content {
-  flex: 1; /* Take remaining space */
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-left: 2px solid yellow;
   position: relative;
-  background-color:  #343541;
+  background-color: #343541;
 }
 
 /************************Header Section*****************************/
@@ -112,29 +111,34 @@
   height: 100px;
   width: 100%;
   top: 0;
-  display:flex;
-  align-items:center;
-  margin-bottom:10%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
 
 .head-nav {
   display: flex;
   gap: 20px;
   position: absolute;
-  right: 5%; /* Adjust for responsiveness */
+  right: 5%;
 }
 
-/* Share Button (Ellipse) */
-.head-nav span:first-child {
+.head-nav span {
   padding: 5px 20px;
   border: 2px solid white;
-  border-radius: 50px; /* Ellipse */
+  border-radius: 50px;
   color: white;
   background: transparent;
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
+  text-align: center;
   transition: all 0.3s ease;
+}
+.head-nav img{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
 }
 
 .head-nav span:first-child:hover {
@@ -142,7 +146,6 @@
   color: #2b2d31;
 }
 
-/* Profile Circle */
 .profile {
   display: flex;
   align-items: center;
@@ -164,38 +167,109 @@
 /************************Conversation Div*****************************/
 .conversaction {
   height: 60vh;
-  width: 80%; /* Responsive width */
+  width: 80%;
+  padding:20px;
   max-width: 800px;
   border: 2px solid blue;
-  margin-top:50px;
+  margin-top: 100px;
   margin-bottom: 30px;
-  border-radius: 30px;
   text-align: center;
-  overflow-y: scroll;
+  overflow: scroll;
   background-color: #343541;
 
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .conversaction::-webkit-scrollbar {
   display: none;
 }
 
+/*********************INDSIDE THE CONVERSACTION********************/
+/* Avatar */
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* Message Container */
+.message-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+/* Bot Message (Left-aligned) */
+.message-container.bot {
+  justify-content: flex-start; /* Align to left */
+}
+
+/* User Message (Right-aligned) */
+.message-container.user {
+  justify-content: flex-end; /* Align to right */
+}
+
+
+/* Message Bubble */
+.message {
+  max-width: 65%; /* Limit message width */
+  padding: 12px 16px;
+  border-radius: 12px;
+  word-wrap: break-word; /* Ensure long words break properly */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Bot Message Styling */
+.message-container.bot .message {
+  background-color: #444654; /* Bot message color */
+  color: white;
+}
+
+/* User Message Styling */
+.message-container.user .message {
+  background-color: #007bff; /* User message color */
+  color: white;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+  padding: 12px 16px;
+  background: #444654;
+  color: white;
+  border-radius: 12px;
+}
+
 /************************Search Input*****************************/
-.search-div,
-input {
-  height: 75px;
-  width: 100%; /* Responsive width */
-  max-width: 800px;
-  border-top: 2px solid green;
-  text-align: left;
-  background-color: #343541;
+.input-area {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Auto-Resizing Textarea */
+.input-area textarea {
+  width: 80%;
+  min-height: 50px; /* Minimum height */
+  max-height: 150px; /* Prevent too much growth */
+  padding: 15px;
+  border: none;
   border-radius: 20px;
-  bottom: 50px;
-  color:white;
-  font-size:20px;
-  outline:none;
+  border: 2px solid green;
+  background-color: #343541;
+  color: white;
+  font-size: 20px;
+  outline: none;
+  resize: none; /* Disable manual resize */
+
+  /* Hide scrollbar across browsers */
+  overflow: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.input-area textarea::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
 }
 
 /************************Button Style*****************************/
@@ -203,7 +277,7 @@ button {
   position: absolute;
   top: 15px;
   left: 15px;
-  background-color: #007bff; /* Blue color */
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -224,12 +298,13 @@ button:active {
 }
 
 /************************Responsive Design*****************************/
-/* Medium Devices (Tablets, Small Laptops) */
 @media (max-width: 1024px) {
   .side-bar {
     width: 30%;
   }
-
+  .head-nav span {
+    width: 50%;
+}
   .conversaction {
     width: 90%;
     height: 50vh;
@@ -240,14 +315,10 @@ button:active {
   }
 }
 
-/* Small Devices (Phones) */
 @media (max-width: 768px) {
-  .parent-div {
-    flex-direction: row; /* Stack vertically */
-  }
-
+  
   .side-bar {
-    width: 100%; /* Full width sidebar */
+    width: 100%;
   }
 
   .main-content {
@@ -269,29 +340,14 @@ button:active {
     right: 10px;
     gap: 10px;
   }
+  .profile,.share {
+    width:20px;
+    right:0;
+}
 }
 
-/* Extra Small Devices (Tiny Phones) */
 @media (max-width: 480px) {
-  .side-bar {
-    width: 100%;
-  }
-
-  .conversaction {
-    height: 35vh;
-  }
-
-  .profile {
-    width: 40px;
-    height: 40px;
-  }
-
-  .head-nav span:first-child {
-    padding: 3px 10px;
-  }
-
-  button {
-    padding: 8px 12px;
-    font-size: 14px;
+  .share,.profile{
+    width:20px;
   }
 }
