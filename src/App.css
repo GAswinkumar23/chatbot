@@ -1,0 +1,353 @@
+
+/* Global Reset */
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.medtitle {
+  position: relative;
+  left: 40%;
+  color: white;
+  font-size: 30px;
+}
+
+/************************Parent Div*****************************/
+.parent-div {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+  overflow: hidden;
+}
+
+/************************Side Bar*****************************/
+.side-bar {
+  width: 20%;
+  background-color: #f4f4f4;
+  border-right: 2px solid red;
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+}
+
+.side-bar.active {
+  width: 20%;
+}
+
+.side-bar:not(.active) {
+  width: 0;
+}
+
+.side-navigate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
+  height: auto;
+  border: 2px solid purple;
+}
+
+/************************Chat history Container*****************************/
+.previouschat {
+  width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.previouschat::-webkit-scrollbar {
+  display: none;
+}
+
+.previouschat ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.previouschat li {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.previouschat li:hover {
+  background-color: #f0f0f0;
+}
+
+.previouschat li strong {
+  font-weight: bold;
+  color: #333;
+}
+
+/************************Main Content*****************************/
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px solid yellow;
+  position: relative;
+  background-color: #343541;
+}
+
+/************************Header Section*****************************/
+.headsec {
+  position: absolute;
+  border: black 2px solid;
+  height: 100px;
+  width: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.head-nav {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 5%;
+}
+
+.head-nav span {
+  padding: 5px 20px;
+  border: 2px solid white;
+  border-radius: 50px;
+  color: white;
+  background: transparent;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.head-nav img{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.head-nav span:first-child:hover {
+  background: white;
+  color: #2b2d31;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #10a37f;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.profile:hover {
+  transform: scale(1.1);
+}
+
+/************************Conversation Div*****************************/
+.conversaction {
+  height: 60vh;
+  width: 80%;
+  padding:20px;
+  max-width: 800px;
+  border: 2px solid blue;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  text-align: center;
+  overflow: scroll;
+  background-color: #343541;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.conversaction::-webkit-scrollbar {
+  display: none;
+}
+
+/*********************INDSIDE THE CONVERSACTION********************/
+/* Avatar */
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* Message Container */
+.message-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+/* Bot Message (Left-aligned) */
+.message-container.bot {
+  justify-content: flex-start; /* Align to left */
+}
+
+/* User Message (Right-aligned) */
+.message-container.user {
+  justify-content: flex-end; /* Align to right */
+}
+
+
+/* Message Bubble */
+.message {
+  max-width: 65%; /* Limit message width */
+  padding: 12px 16px;
+  border-radius: 12px;
+  word-wrap: break-word; /* Ensure long words break properly */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Bot Message Styling */
+.message-container.bot .message {
+  background-color: #444654; /* Bot message color */
+  color: white;
+}
+
+/* User Message Styling */
+.message-container.user .message {
+  background-color: #007bff; /* User message color */
+  color: white;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+  padding: 12px 16px;
+  background: #444654;
+  color: white;
+  border-radius: 12px;
+}
+
+/************************Search Input*****************************/
+.input-area {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Auto-Resizing Textarea */
+.input-area textarea {
+  width: 80%;
+  min-height: 50px; /* Minimum height */
+  max-height: 150px; /* Prevent too much growth */
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  border: 2px solid green;
+  background-color: #343541;
+  color: white;
+  font-size: 20px;
+  outline: none;
+  resize: none; /* Disable manual resize */
+
+  /* Hide scrollbar across browsers */
+  overflow: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.input-area textarea::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+/************************Button Style*****************************/
+button {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+button:active {
+  background-color: #003f7f;
+  transform: scale(1);
+}
+
+/************************Responsive Design*****************************/
+@media (max-width: 1024px) {
+  .side-bar {
+    width: 30%;
+  }
+  .head-nav span {
+    width: 50%;
+}
+  .conversaction {
+    width: 90%;
+    height: 50vh;
+  }
+
+  .head-nav {
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .side-bar {
+    width: 100%;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .conversaction {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .search-div,
+  input {
+    width: 95%;
+  }
+
+  .head-nav {
+    right: 10px;
+    gap: 10px;
+  }
+  .profile,.share {
+    width:20px;
+    right:0;
+}
+}
+
+@media (max-width: 480px) {
+  .share,.profile{
+    width:20px;
+  }
+}
