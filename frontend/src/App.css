@@ -92,6 +92,19 @@
   color: #333;
 }
 
+.delete-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  position:fixed;
+  left:0;
+  font-weight: bold;
+  user-select: none;
+}
+
+.delete-icon:hover {
+  color: red; /* Change color on hover */
+}
+
 /************************Main Content*****************************/
 .main-content {
   flex: 1;
