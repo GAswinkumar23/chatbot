@@ -88,6 +88,7 @@
 }
 
 .previouschat li strong {
+  position: relative;
   font-weight: bold;
   color: #333;
 }
@@ -95,8 +96,8 @@
 .delete-icon {
   margin-left: 10px;
   cursor: pointer;
-  position:fixed;
-  left:0;
+  position:absolute;
+  right:0;
   font-weight: bold;
   user-select: none;
 }
