@@ -122,7 +122,7 @@ export default function App() {
                     className="delete-icon"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevents loading while deleting
-                      deleteSession(session.name);
+                      deleteSession(index);
                     }}
                   >
                     ⋮

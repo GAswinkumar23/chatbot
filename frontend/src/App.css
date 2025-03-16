@@ -1,4 +1,3 @@
-
 /* Global Reset */
 * {
   padding: 0;
@@ -27,7 +26,9 @@
 .side-bar {
   width: 20%;
   background-color: #f4f4f4;
-  border-right: 2px solid red;
+  backdrop-filter: blur(20px);
+  /* border-right: 2px solid red; */
+  background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(143,232,255,1) 21.9%, rgba(209,243,251,1) 52.9% );
   overflow: hidden;
   transition: width 0.3s ease-in-out;
 }
@@ -47,7 +48,7 @@
   width: 100%;
   min-height: 40px;
   height: auto;
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
 }
 
 /************************Chat history Container*****************************/
@@ -55,10 +56,11 @@
   width: 100%;
   margin: 20px auto;
   padding: 10px;
-  background-color: #f9f9f9;
+  backdrop-filter:blur(10px);
+  background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(143,232,255,1) 21.9%, rgb(176, 237, 251) 52.9% );
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-height: 400px;
+  height:100%;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -69,12 +71,14 @@
 }
 
 .previouschat ul {
+  width:100%;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .previouschat li {
+  position: relative;
   padding: 15px;
   margin-bottom: 10px;
   background-color: white;
@@ -88,7 +92,6 @@
 }
 
 .previouschat li strong {
-  position: relative;
   font-weight: bold;
   color: #333;
 }
@@ -113,15 +116,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-left: 2px solid yellow;
+  /* border-left: 2px solid yellow; */
   position: relative;
-  background-color: #343541;
+  background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(143,232,255,1) 21.9%, rgba(209,243,251,1) 52.9% );
 }
 
 /************************Header Section*****************************/
 .headsec {
   position: absolute;
-  border: black 2px solid;
+  /* border: black 2px solid; */
   height: 100px;
   width: 100%;
   top: 0;
@@ -139,7 +142,7 @@
 
 .head-nav span {
   padding: 5px 20px;
-  border: 2px solid white;
+  /* border: 2px solid white; */
   border-radius: 50px;
   color: white;
   background: transparent;
@@ -184,13 +187,13 @@
   width: 80%;
   padding:20px;
   max-width: 800px;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   margin-top: 100px;
   margin-bottom: 30px;
   text-align: center;
   overflow: scroll;
-  background-color: #343541;
-
+  backdrop-filter: blur(20px);
+  background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(143,232,255,1) 21.9%, rgba(209,243,251,1) 52.9% );
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -265,11 +268,11 @@
 .input-area textarea {
   width: 80%;
   min-height: 50px; /* Minimum height */
-  max-height: 150px; /* Prevent too much growth */
+  max-height: 100px; /* Prevent too much growth */
   padding: 15px;
   border: none;
   border-radius: 20px;
-  border: 2px solid green;
+  /* border: 2px solid green; */
   background-color: #343541;
   color: white;
   font-size: 20px;

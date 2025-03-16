@@ -29,29 +29,36 @@ router.get("/getChats", async (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     }
   });  
-
-// Delete Chat Route (using session index)
-router.delete("/deleteChat/:index", async (req, res) => {
+  router.delete("/deleteChat/:index", async (req, res) => {
     try {
       const { index } = req.params;
+      const sessionIndex = parseInt(index, 10);
   
-      // Find all chats sorted by creation date (newest first)
+      // Ensure the index is a valid number
+      if (isNaN(sessionIndex) || sessionIndex < 0) {
+        return res.status(400).json({ error: "Invalid session index" });
+      }
+  
+      // Fetch all chats sorted by creation date (newest first)
       const chats = await Chat.find().sort({ createdAt: -1 });
   
-      // Validate index
-      if (index < 0 || index >= chats.length) {
-        return res.status(404).json({ error: "Invalid session index" });
+      if (sessionIndex >= chats.length) {
+        return res.status(404).json({ error: "Chat not found" });
       }
   
       // Delete the chat corresponding to the session index
-      const chatToDelete = chats[index];
+      const chatToDelete = chats[sessionIndex];
+      if (!chatToDelete || !chatToDelete._id) {
+        return res.status(404).json({ error: "Chat not found" });
+      }
+  
       await Chat.findByIdAndDelete(chatToDelete._id);
   
-      res.status(200).json({ message: "Chat deleted successfully!" });
+      return res.status(200).json({ message: "Chat deleted successfully!" });
     } catch (error) {
       console.error("Error deleting chat:", error);
-      res.status(500).json({ error: "Internal server error" });
+      return res.status(500).json({ error: "Internal server error" });
     }
   });
-    
+  
 export default router;
